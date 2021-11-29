@@ -1,5 +1,5 @@
 {
-  "name": "cai-energy",
+  "name": "cai-energy-management",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
@@ -7,11 +7,18 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "axios": "^0.24.0",
+    "firebase": "^9.5.0",
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "react-icons": "^4.3.1",
+    "react-router-dom": "^6.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.4",
+    "tailwindcss": "^2.2.19",
     "vite": "^2.6.4"
   }
 }
