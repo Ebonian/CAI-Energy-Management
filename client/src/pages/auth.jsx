@@ -10,32 +10,38 @@ export default function Auth() {
     return <Navigate to="/" />;
   }
 
-  const inputStyle =
-    "outline-none bg-gray-50 p-2 border-2 m-2 focus:bg-gray-100";
-
   return (
-    <div className="grid min-h-screen place-content-center">
-      {/* text */}
-      <h1 className="font-bold text-4xl text-gray-300 p-2 mb-4">Login</h1>
-      {/* email input */}
-      <input
-        type="text"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-        className={inputStyle}
-      />
-      {/* password input */}
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-        className={inputStyle}
-      />
-      {/* login button */}
-      <div className="border-2 bg-gray-50 p-2 m-2 w-20 grid place-content-center hover:bg-gray-100 duration-200 cursor-pointer">
-        <p onClick={login}>Login</p>
+    <div className="flex h-screen w-full">
+      <div className="flex flex-grow flex-col items-start justify-center bg-secondary-400 p-40 text-white">
+        <h1 className="text-4xl font-bold leading-normal">
+          Energy Consumption
+          <br /> Evaluator and Predictor (ECEP)
+        </h1>
+        <h3 className="text-lg mt-6">Let's save energy!</h3>
+      </div>
+      <div className="grid place-content-center w-5/12">
+        <h1 className="font-bold text-3xl text-gray-800">Hello Again!</h1>
+        <h4 className="mt-1 text-gray-600">Welcome Back</h4>
+        <input
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Username"
+          className="outline-none p-3 rounded-full border w-64 mt-7 select-none"
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          className="outline-none p-3 rounded-full border w-64 mt-4 select-none"
+        />
+        <div
+          className="rounded-full grid place-content-center bg-secondary-400 p-4 text-sm text-white cursor-pointer hover:opacity-95 duration-300 mt-4"
+          onClick={login}
+        >
+          Login
+        </div>
       </div>
     </div>
   );

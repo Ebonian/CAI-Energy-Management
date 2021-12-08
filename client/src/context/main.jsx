@@ -9,7 +9,7 @@ import { auth } from "../firebase";
 export const Context = createContext(null);
 
 export default function MainContext({ children }) {
-  // teacher authentication
+  // authentication
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -31,9 +31,27 @@ export default function MainContext({ children }) {
   const logout = async () => {
     await signOut(auth);
   };
+
+  // navigation
+  const [focusNav, setFocusNav] = useState(false);
+
+  const focusNavHandler = () => {
+    setFocusNav(!focusNav);
+  };
   return (
     <Context.Provider
-      value={{ email, setEmail, password, setPassword, session, login, logout }}
+      value={{
+        email,
+        setEmail,
+        password,
+        setPassword,
+        session,
+        login,
+        logout,
+        focusNavHandler,
+        focusNav,
+        setFocusNav,
+      }}
     >
       {children}
     </Context.Provider>
