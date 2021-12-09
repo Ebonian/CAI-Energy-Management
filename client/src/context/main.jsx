@@ -19,6 +19,14 @@ export default function MainContext({ children }) {
     setSession(currentUser);
   });
 
+  var username = session?.email;
+
+  if (`${session?.email}`.includes("support")) {
+    var username = `${username}`.slice(0, -12);
+  } else {
+    var username = `${username}`.slice(0, -11);
+  }
+
   const login = async () => {
     try {
       const user = await signInWithEmailAndPassword(auth, email, password);
@@ -46,6 +54,7 @@ export default function MainContext({ children }) {
         password,
         setPassword,
         session,
+        username,
         login,
         logout,
         focusNavHandler,
