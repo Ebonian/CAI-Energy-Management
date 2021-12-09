@@ -27,7 +27,7 @@ export default function Layout({ children, page }) {
               className="flex items-center space-x-2 select-none cursor-pointer"
               onClick={userMenuHandler}
             >
-              <p>{session?.email}</p>
+              <p>{`${session?.email}`.slice(0, -4)}</p>
               <FiChevronDown className={userMenu ? "rotate-180" : "rotate-0"} />
             </div>
           </div>
