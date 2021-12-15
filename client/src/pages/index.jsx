@@ -46,10 +46,10 @@ export default function Home() {
   // };
 
   // console.log(data[0].amount.actual[2021]);
-  console.log(data[0].score.slice(-1));
-  console.log(data[1].score.slice(-1));
-  console.log(data[2].score.slice(-1));
-  console.log(data[3].score.slice(-1));
+  // console.log(data[0].score.slice(-1));
+  // console.log(data[1].score.slice(-1));
+  // console.log(data[2].score.slice(-1));
+  // console.log(data[3].score.slice(-1));
 
   const labels = [
     "Jan",
@@ -85,13 +85,13 @@ export default function Home() {
             datasets: [
               {
                 label: "Actual",
-                data: data[0].amount.actual[2021],
+                // data: data[0].amount.actual[2021],
                 borderColor: "rgb(255, 99, 132)",
                 backgroundColor: "rgba(255, 99, 132, 0.5)",
               },
               {
                 label: "Predicted",
-                data: data[0].amount.predicted[2021],
+                // data: data[0].amount.predicted[2021],
                 // borderColor: "rgb(53, 162, 235)",
                 // backgroundColor: "rgba(53, 162, 235, 0.5)",
               },
