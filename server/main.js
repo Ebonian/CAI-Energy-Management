@@ -38,7 +38,7 @@ mongoose.connect(
 );
 
 // api routes
-app.get("/", (req, res) => res.status(200).send("Hello, World!"));
+app.get("/", (req, res) => res.status(200).send([]));
 
 // get the branch
 app.get("/sync", (req, res) => {

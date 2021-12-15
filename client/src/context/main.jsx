@@ -1,12 +1,13 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
 import { auth } from "../firebase";
+import axios from "../axios";
 
-import data from "../../../server/data/data.json";
+// import data from "../../../server/data/data.json";
 
 export const Context = createContext(null);
 
@@ -42,6 +43,23 @@ export default function MainContext({ children }) {
     await signOut(auth);
   };
 
+  // api
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios.get(`/${username}`).then((res) => {
+      setData(res.data);
+    });
+  }, [username]);
+
+  var isData = Object.keys(data).length;
+
+  if (Object.keys(data).length > 0) {
+    isData = 1;
+  }
+
+  console.log(data);
+
   // navigation
   const [focusNav, setFocusNav] = useState(false);
 
@@ -63,6 +81,7 @@ export default function MainContext({ children }) {
         focusNav,
         setFocusNav,
         data,
+        isData,
       }}
     >
       {children}
