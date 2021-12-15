@@ -16,7 +16,7 @@ from sklearn.model_selection import train_test_split
 # In[2]:
 
 
-data = pd.read_excel("Energy Data(newest).xls")
+data = pd.read_excel("Energy_Datanewest.xls")
 first_part = data[['Not Renovated','Renovated', 'All Cafe', 'No All Cafe', 'Food Place', 'No Food Place', 'Kudsan', 'No Kudsan', 'Fix-Speed', 'Inverter', 'Sale area', 'Back area','All area', 'Shelf', 'VAULT', 'Opentype 0.9 m', 'Opentype 1.92 m', 'Rice box', 'Rice box panel']]
 second_part = data.iloc[:,144:]
 
