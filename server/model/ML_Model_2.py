@@ -45,7 +45,7 @@ Treescore
 #For real usage, x will be changed to specific branch data including topics in "x"
 #To display data for selected branch, change 0 to that branch index
 trained_tree = Treemodel.predict(x)
-trained_tree[0]
+trained_tree[54]
 
 
 # In[6]:
@@ -101,7 +101,8 @@ percentage = np.nan_to_num(percentage,nan=0)
 #To display data for selected branch and month, change 0,56 to that branch index and that month column.
 efficiency_score = 10.00-(percentage/10)
 efficiency_score[efficiency_score>10] = 10
-efficiency_score[0,56] #Display Sep_2021 data for branch number 1
+# efficiency_score[0,56] #Display Sep_2021 data for branch number 1
+efficiency_score[0] #Display Sep_2021 data for branch number 1
 
 
 # In[ ]:

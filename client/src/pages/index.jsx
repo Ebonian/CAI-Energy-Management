@@ -16,17 +16,7 @@ import {
 import { Line } from "react-chartjs-2";
 
 export default function Home() {
-  const {
-    email,
-    setEmail,
-    password,
-    setPassword,
-    session,
-    login,
-    logout,
-    focusNav,
-    data,
-  } = useContext(Context);
+  const { session, data } = useContext(Context);
 
   if (!session) {
     return <Navigate to="/auth" />;
@@ -55,7 +45,11 @@ export default function Home() {
   //   },
   // };
 
-  console.log(data[0].amount.actual);
+  // console.log(data[0].amount.actual[2021]);
+  console.log(data[0].score.slice(-1));
+  console.log(data[1].score.slice(-1));
+  console.log(data[2].score.slice(-1));
+  console.log(data[3].score.slice(-1));
 
   const labels = [
     "Jan",
@@ -67,6 +61,9 @@ export default function Home() {
     "Jul",
     "Aug",
     "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
 
   return (
@@ -88,13 +85,13 @@ export default function Home() {
             datasets: [
               {
                 label: "Actual",
-                data: [2, 3, 4, 5, 6, 7, 1],
-                // borderColor: "rgb(255, 99, 132)",
-                // backgroundColor: "rgba(255, 99, 132, 0.5)",
+                data: data[0].amount.actual[2021],
+                borderColor: "rgb(255, 99, 132)",
+                backgroundColor: "rgba(255, 99, 132, 0.5)",
               },
               {
                 label: "Predicted",
-                data: [5, 6, 2, 7, 8, 9, 10],
+                data: data[0].amount.predicted[2021],
                 // borderColor: "rgb(53, 162, 235)",
                 // backgroundColor: "rgba(53, 162, 235, 0.5)",
               },
@@ -107,3 +104,6 @@ export default function Home() {
     </Layout>
   );
 }
+
+// selected data
+// 0, 16, 34, 54
