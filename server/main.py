@@ -1,3 +1,5 @@
+# python -m uvicorn main:app --reload
+
 # import dependencies
 from typing import List
 from fastapi import FastAPI

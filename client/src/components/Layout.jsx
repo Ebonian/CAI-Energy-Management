@@ -32,7 +32,7 @@ export default function Layout({ children, page }) {
             </div>
           </div>
           {userMenu && (
-            <div className="absolute right-24 top-6 bg-white rounded-xl w-48 h-60 shadow-xl px-3 py-2">
+            <div className="absolute right-20 mr-2 top-0 bg-white rounded-xl w-48 h-60 shadow-xl px-3 py-2 z-50">
               <p className="cursor-pointer" onClick={logout}>
                 Logout
               </p>

@@ -6,6 +6,8 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase";
 
+import data from "../../../server/data/data.json";
+
 export const Context = createContext(null);
 
 export default function MainContext({ children }) {
@@ -60,6 +62,7 @@ export default function MainContext({ children }) {
         focusNavHandler,
         focusNav,
         setFocusNav,
+        data,
       }}
     >
       {children}
