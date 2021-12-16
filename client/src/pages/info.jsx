@@ -5,17 +5,7 @@ import Navigation from "../components/Navigation";
 import { Context } from "../context/main";
 
 export default function Info() {
-  const {
-    email,
-    setEmail,
-    password,
-    setPassword,
-    session,
-    login,
-    logout,
-    focusNav,
-    username,
-  } = useContext(Context);
+  const { session, username, data, isData, logout } = useContext(Context);
 
   if (!session) {
     return <Navigate to="/auth" />;
@@ -24,8 +14,16 @@ export default function Info() {
   return (
     <Layout page="Information">
       <div className="flex w-full p-5 rounded-2xl bg-white">
-        <div className="flex items-center flex-col w-96">
-          <p>{username}</p>
+        <div className="flex items-center mt-10 space-y-5 flex-col w-96 select-none">
+          <div className="grid place-content-center w-20 h-20 rounded-full bg-gray-100">
+            <p className="font-semibold text-lg text-gray-400">{username}</p>
+          </div>
+          <p
+            className="text-gray-700 hover:text-red-500 cursor-pointer duration-300"
+            onClick={logout}
+          >
+            Logout
+          </p>
         </div>
         <div className="flex flex-col flex-grow px-10">
           <h1 className="font-semibold">Store Information</h1>
@@ -33,18 +31,42 @@ export default function Info() {
           <div className="flex w-full space-x-10 mt-7">
             <div className="flex flex-col flex-grow space-y-6">
               <InfoBox title="Store Code" content={username} />
-              <InfoBox title="Location" content="Unknown" />
-              <InfoBox title="Sale Area" content="Unknown" />
+              <InfoBox
+                title="Location"
+                content={data.location ? data.location : "Unknown"}
+              />
+              <InfoBox
+                title="Sale Area"
+                content={data.saleArea ? data.saleArea : "Unknown"}
+              />
             </div>
             <div className="flex flex-col flex-grow space-y-6">
-              <InfoBox title="Store Name" content="Unknown" />
-              <InfoBox title="Opened Date" content="Unknown" />
-              <InfoBox title="Back Area" content="Unknown" />
+              <InfoBox
+                title="Store Name"
+                content={data.name ? data.name : "Unknown"}
+              />
+              <InfoBox
+                title="Opened Date"
+                content={data.openedDate ? data.openedDate : "Unknown"}
+              />
+              <InfoBox
+                title="Back Area"
+                content={data.backArea ? data.backArea : "Unknown"}
+              />
             </div>
             <div className="flex flex-col flex-grow space-y-6">
-              <InfoBox title="Manager" content="Unknown" />
-              <InfoBox title="Store Type" content="Unknown" />
-              <InfoBox title="All Area" content="Unknown" />
+              <InfoBox
+                title="Manager"
+                content={data.manager ? data.manager : "Unknown"}
+              />
+              <InfoBox
+                title="Store Type"
+                content={data.type ? data.type : "Unknown"}
+              />
+              <InfoBox
+                title="All Area"
+                content={data.allArea ? data.allArea : "Unknown"}
+              />
             </div>
           </div>
         </div>

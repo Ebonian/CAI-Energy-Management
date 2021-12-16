@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import {
+  FiBarChart2,
   FiChevronsLeft,
   FiGrid,
   FiInfo,
@@ -11,17 +12,7 @@ import { Context } from "../context/main";
 import CAILogo from "../images/CAIlogo@2x.png";
 
 export default function Navigation({ active }) {
-  const {
-    email,
-    setEmail,
-    password,
-    setPassword,
-    session,
-    login,
-    logout,
-    focusNav,
-    focusNavHandler,
-  } = useContext(Context);
+  const { isSupport, focusNav, focusNavHandler } = useContext(Context);
   return (
     <div
       className={`flex h-screen fixed ${
@@ -60,12 +51,22 @@ export default function Navigation({ active }) {
               route="/"
               name="Dashboards"
             />
-            <NavList
-              active={active}
-              focusNav={focusNav}
-              route="/rank"
-              name="Ranking"
-            />
+            {isSupport && (
+              <NavList
+                active={active}
+                focusNav={focusNav}
+                route="/rank"
+                name="Ranking"
+              />
+            )}
+            {isSupport && (
+              <NavList
+                active={active}
+                focusNav={focusNav}
+                route="/insight"
+                name="Insight"
+              />
+            )}
             <NavList
               active={active}
               focusNav={focusNav}
@@ -103,12 +104,13 @@ function NavList({ active, focusNav, route, name }) {
       to={route}
       className={`${
         active === name
-          ? "bg-primary-400 hover:opacity-95"
-          : "hover:bg-purple-50"
+          ? "bg-secondary-400 hover:opacity-95"
+          : "hover:bg-red-50"
       } flex items-center space-x-4 cursor-pointer relative overflow-clip overflow-hidden p-3 rounded-lg duration-300`}
     >
       {name === "Dashboards" && <FiGrid className={IconStyle} />}
       {name === "Ranking" && <FiThumbsUp className={IconStyle} />}
+      {name === "Insight" && <FiBarChart2 className={IconStyle} />}
       {name === "Information" && <FiInfo className={IconStyle} />}
       {name === "Logout" && <FiPower className={IconStyle} />}
       <p

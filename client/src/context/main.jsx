@@ -18,6 +18,8 @@ export default function MainContext({ children }) {
 
   const [session, setSession] = useState({});
 
+  const [isSupport, setIsSupport] = useState(false);
+
   onAuthStateChanged(auth, (currentUser) => {
     setSession(currentUser);
   });
@@ -30,10 +32,18 @@ export default function MainContext({ children }) {
     var username = `${username}`.slice(0, -11);
   }
 
+  useEffect(() => {
+    if (`${session?.email}`.includes("support")) {
+      setIsSupport(true);
+    } else {
+      setIsSupport(false);
+    }
+  }, [session]);
+
   const login = async () => {
     try {
       const user = await signInWithEmailAndPassword(auth, email, password);
-      console.log(user);
+      // console.log(user);
     } catch (error) {
       console.log(error.message);
     }
@@ -58,7 +68,27 @@ export default function MainContext({ children }) {
     isData = 1;
   }
 
-  console.log(data);
+  // eff score ranking system
+  const [allData, setAllData] = useState([]);
+  useEffect(() => {
+    axios.get("/sync").then((res) => {
+      setAllData(res.data);
+    });
+  }, []);
+
+  const allScore = allData.map((x) => x.score.slice(-1));
+  const score = [].concat.apply([], allScore);
+  const sortedScore = score.sort((a, b) => {
+    return b - a;
+  });
+
+  const [branchRank, setBranchRank] = useState(null);
+
+  useEffect(() => {
+    if (isData) {
+      setBranchRank(sortedScore.indexOf(+data.score.slice(-1).join("")) + 1);
+    }
+  }, [sortedScore]);
 
   // navigation
   const [focusNav, setFocusNav] = useState(false);
@@ -75,6 +105,7 @@ export default function MainContext({ children }) {
         setPassword,
         session,
         username,
+        isSupport,
         login,
         logout,
         focusNavHandler,
@@ -82,6 +113,7 @@ export default function MainContext({ children }) {
         setFocusNav,
         data,
         isData,
+        branchRank,
       }}
     >
       {children}
