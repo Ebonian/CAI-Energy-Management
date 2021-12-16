@@ -24,7 +24,7 @@ export default function Navigation({ active }) {
           {/* header */}
           <div className="flex relative justify-end mr-1 overflow-clip overflow-hidden h-10">
             <div>
-              <img
+              {/* <img
                 src={CAILogo}
                 alt="CAI Logo"
                 className={`${
@@ -32,7 +32,16 @@ export default function Navigation({ active }) {
                     ? "absolute -translate-x-36"
                     : "absolute -translate-x-20"
                 } h-10 duration-300`}
-              />
+              /> */}
+              <h1
+                className={`${
+                  focusNav
+                    ? "absolute -translate-x-36"
+                    : "absolute -translate-x-20"
+                } h-10 duration-300 text-3xl font-bold text-secondary-400`}
+              >
+                ECEP
+              </h1>
             </div>
             <div
               className={`p-2 w-8 h-8 rounded-full bg-gray-100 text-gray-400 cursor-pointer ${
