@@ -13,10 +13,11 @@ import {
   Tooltip,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { FiAward } from "react-icons/fi";
+import { FiAward, FiChevronDown, FiChevronUp, FiMinus } from "react-icons/fi";
 
 export default function Home() {
-  const { session, data, isData, branchRank, isSupport } = useContext(Context);
+  const { session, data, isData, branchRank, isSupport, positionChange } =
+    useContext(Context);
 
   if (!session) {
     return <Navigate to="/auth" />;
@@ -49,21 +50,39 @@ export default function Home() {
   return (
     <Layout page="Dashboards">
       <div className="grid w-full grid-cols-3 gap-24">
-        <div className="flex justify-center items-center flex-col rounded-2xl bg-white h-48 p-3 space-y-4 pb-8">
-          <h3 className="font-bold text-xl text-gray-700">Effiency Score</h3>
+        <div className="flex justify-center items-center flex-col rounded-2xl bg-white h-48 p-3 space-y-4 pb-8 text-gray-700">
+          <h3 className="font-bold text-xl">Effiency Score</h3>
           <div className="flex space-x-5">
             <FiAward className="text-5xl" />
-            <h1 className="font-bold text-5xl text-gray-700">
+            <h1 className="font-bold text-5xl">
               {isData && Math.round(data.score.slice(-1) * 100) / 100}
             </h1>
           </div>
         </div>
-        <div className="flex justify-center items-center flex-col rounded-2xl bg-white h-48 p-3 space-y-4 pb-8">
-          <h3 className="font-bold text-xl text-gray-700">Current Ranking</h3>
-          <div className="flex space-x-5">
-            <h1 className="font-bold text-5xl text-gray-700">
-              {isData && branchRank}
-            </h1>
+        <div className="flex justify-center items-center flex-col rounded-2xl bg-white h-48 p-3 space-y-4 pb-8 text-gray-700">
+          <h3 className="font-bold text-xl">Current Rank</h3>
+          <div className="flex items-center space-x-3">
+            <p
+              className={`flex items-center select-none font-bold text-xl ${
+                positionChange == 0
+                  ? "text-yellow-400"
+                  : positionChange > 0
+                  ? "text-green-500"
+                  : "text-red-500"
+              }`}
+            >
+              <span>{Math.abs(positionChange)}</span>
+              <span className="text-3xl">
+                {positionChange == 0 ? (
+                  <div className="rounded-full h-1 w-4 bg-yellow-400 mx-2" />
+                ) : positionChange > 0 ? (
+                  <FiChevronUp />
+                ) : (
+                  <FiChevronDown />
+                )}
+              </span>
+            </p>
+            <h1 className="font-bold text-5xl pr-12">{isData && branchRank}</h1>
           </div>
         </div>
         <div className="rounded-2xl bg-white h-48 p-3"></div>

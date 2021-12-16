@@ -7,8 +7,6 @@ import {
 import { auth } from "../firebase";
 import axios from "../axios";
 
-// import data from "../../../server/data/data.json";
-
 export const Context = createContext(null);
 
 export default function MainContext({ children }) {
@@ -82,13 +80,24 @@ export default function MainContext({ children }) {
     return b - a;
   });
 
+  const oldScore = allData.map((x) => x.score[x.score.length - 2]);
+  const sortedOldScore = oldScore.sort((a, b) => {
+    return b - a;
+  });
+
   const [branchRank, setBranchRank] = useState(null);
+  const [oldBranchRank, setOldBranchRank] = useState(null);
 
   useEffect(() => {
     if (isData) {
       setBranchRank(sortedScore.indexOf(+data.score.slice(-1).join("")) + 1);
+      setOldBranchRank(
+        sortedOldScore.indexOf(data.score[data.score.length - 2]) + 1
+      );
     }
   }, [sortedScore]);
+
+  const positionChange = branchRank - oldBranchRank;
 
   // navigation
   const [focusNav, setFocusNav] = useState(false);
@@ -116,6 +125,8 @@ export default function MainContext({ children }) {
         isData,
         branchRank,
         allScore,
+        sortedScore,
+        positionChange,
       }}
     >
       {children}
