@@ -90,7 +90,9 @@ for k in range(2790):
 #Efficiency Score
 true_amount = data.iloc[:,20:77]
 true_amount = true_amount.to_numpy()
-percentage = (true_amount - trained_tree)*100/trained_tree
+trained_tree = np.where(trained_tree == 0, 1, trained_tree)
+trained_tree = trained_tree.astype('int64')
+percentage = ((true_amount - trained_tree)*100)/trained_tree
 percentage = np.nan_to_num(percentage,nan=0)
 
 
@@ -99,10 +101,9 @@ percentage = np.nan_to_num(percentage,nan=0)
 
 #Max efficiency score is 10.00.
 #To display data for selected branch and month, change 0,56 to that branch index and that month column.
-efficiency_score = 10.00-(percentage/10)
-efficiency_score[efficiency_score>10] = 10
-# efficiency_score[0,56] #Display Sep_2021 data for branch number 1
-efficiency_score[0] #Display Sep_2021 data for branch number 1
+efficiency_score = 10-(percentage/10)
+efficiency_score = efficiency_score/efficiency_score.max()*10
+efficiency_score[0,56] #Display Sep_2021 data for branch number 1
 
 
 # In[ ]:
