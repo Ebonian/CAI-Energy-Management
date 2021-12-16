@@ -37,7 +37,7 @@ export default function Auth() {
           className="outline-none p-3 rounded-full border w-64 mt-4 select-none"
         />
         <div
-          className="rounded-full grid place-content-center bg-secondary-400 p-4 text-sm text-white cursor-pointer hover:opacity-95 duration-300 mt-4"
+          className="rounded-full grid place-content-center bg-secondary-400 p-4 text-sm text-white cursor-pointer hover:opacity-95 duration-300 mt-4 select-none"
           onClick={login}
         >
           Login

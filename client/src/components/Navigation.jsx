@@ -9,10 +9,9 @@ import {
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { Context } from "../context/main";
-import CAILogo from "../images/CAIlogo@2x.png";
 
 export default function Navigation({ active }) {
-  const { isSupport, focusNav, focusNavHandler } = useContext(Context);
+  const { isSupport, focusNav, focusNavHandler, logout } = useContext(Context);
   return (
     <div
       className={`flex h-screen fixed ${
@@ -84,15 +83,18 @@ export default function Navigation({ active }) {
             />
           </div>
         </div>
-        {/* user info */}
-        <div className="w-full overflow-hidden overflow-clip relative">
+        {/* logout button */}
+        <div
+          className="w-full overflow-hidden overflow-clip relative"
+          onClick={logout}
+        >
           <div
             className={` flex items-center space-x-4 cursor-pointer relative overflow-clip overflow-hidden p-3 rounded-lg duration-300 hover:bg-red-400 text-gray-400 hover:text-white`}
           >
             <FiPower className="text-lg" />
             <p
-              className={`text-sm duration-300 ${
-                focusNav ? "absolute translate-x-4" : "absolute translate-x-8"
+              className={`text-sm ${
+                focusNav ? "absolute translate-x-4" : "absolute translate-x-4"
               }`}
             >
               Logout

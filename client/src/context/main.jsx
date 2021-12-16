@@ -40,7 +40,11 @@ export default function MainContext({ children }) {
 
   const login = async () => {
     try {
-      const user = await signInWithEmailAndPassword(auth, email, password);
+      const user = await signInWithEmailAndPassword(
+        auth,
+        email + ".com",
+        password
+      );
       // console.log(user);
     } catch (error) {
       console.log(error.message);
