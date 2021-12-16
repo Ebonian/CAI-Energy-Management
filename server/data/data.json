@@ -9,6 +9,9 @@
     "saleArea": 168.05,
     "backArea": 60.65,
     "allArea": 228.7,
+    "kudsan": false,
+    "allcafe": false,
+    "inverter": false,
     "amount": {
       "actual": {
         "2017": [
@@ -109,6 +112,9 @@
     "saleArea": 106.67,
     "backArea": 27.56,
     "allArea": 134.23,
+    "kudsan": false,
+    "allcafe": false,
+    "inverter": false,
     "amount": {
       "actual": {
         "2017": [
@@ -196,6 +202,9 @@
     "saleArea": 211.95,
     "backArea": 118.4,
     "allArea": 330.35,
+    "kudsan": true,
+    "allcafe": true,
+    "inverter": true,
     "amount": {
       "actual": {
         "2017": [
@@ -286,6 +295,9 @@
     "saleArea": 206.29,
     "backArea": 28.48,
     "allArea": 234.77,
+    "kudsan": false,
+    "allcafe": true,
+    "inverter": false,
     "amount": {
       "actual": {
         "2017": [
