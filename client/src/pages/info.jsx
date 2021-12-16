@@ -5,7 +5,7 @@ import Navigation from "../components/Navigation";
 import { Context } from "../context/main";
 
 export default function Info() {
-  const { session, username, data, isData, logout } = useContext(Context);
+  const { session, username, data, logout } = useContext(Context);
 
   if (!session) {
     return <Navigate to="/auth" />;

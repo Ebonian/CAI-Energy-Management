@@ -112,8 +112,10 @@ export default function MainContext({ children }) {
         focusNav,
         setFocusNav,
         data,
+        allData,
         isData,
         branchRank,
+        allScore,
       }}
     >
       {children}
