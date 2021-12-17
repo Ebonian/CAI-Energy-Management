@@ -32,7 +32,8 @@ export default function Navigation({ active }) {
                     : "absolute -translate-x-20"
                 } h-10 duration-300`}
               /> */}
-              <h1
+              <Link
+                to="/"
                 className={`${
                   focusNav
                     ? "absolute -translate-x-36"
@@ -40,7 +41,7 @@ export default function Navigation({ active }) {
                 } h-10 duration-300 text-3xl font-bold text-secondary-400`}
               >
                 ECEP
-              </h1>
+              </Link>
             </div>
             <div
               className={`p-2 w-8 h-8 rounded-full bg-gray-100 text-gray-400 cursor-pointer ${

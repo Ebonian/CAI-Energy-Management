@@ -15,7 +15,7 @@ import {
 import { Line } from "react-chartjs-2";
 
 export default function Insight() {
-  const { session, isSupport, data, isData } = useContext(Context);
+  const { session, isSupport, data, isData, overUsed } = useContext(Context);
 
   if (session) {
     if (!isSupport) {
@@ -109,10 +109,30 @@ export default function Insight() {
     Object.values(data.amount.predicted)
   );
 
-  console.log(data.kudsan);
-
   return (
     <Layout page="Insight">
+      {overUsed &&
+        (data.kudsan || data.allcafe || !data.inverter ? (
+          <div className="p-5 rounded-2xl bg-white space-y-5">
+            <h3 className="font-bold text-xl text-gray-700">Suggestion</h3>
+            <div className="flex justify-start items-center w-full space-x-5">
+              {data.kudsan && (
+                <div className="py-2 px-4 bg-gray-100 rounded-xl">Kudsan</div>
+              )}
+              {data.allcafe && (
+                <div className="py-2 px-4 bg-gray-100 rounded-xl">All Cafe</div>
+              )}
+              {!data.inverter && (
+                <div className="py-2 px-4 bg-gray-100 rounded-xl">
+                  Fix-Speed A/C Type
+                </div>
+              )}
+              <p>are effect on branch's energy consumption</p>
+            </div>
+          </div>
+        ) : (
+          <></>
+        ))}
       <Tile
         title="Electricity Usage"
         legend={
@@ -194,27 +214,6 @@ export default function Insight() {
           height={300}
         />
       </Tile>
-      {data.kudsan || data.allcafe || !data.inverter ? (
-        <div className="p-5 rounded-2xl bg-white space-y-5">
-          <h3 className="font-bold text-xl text-gray-700">Suggestion</h3>
-          <div className="flex justify-start items-center w-full space-x-5">
-            {data.kudsan && (
-              <div className="py-2 px-4 bg-gray-100 rounded-xl">Kudsan</div>
-            )}
-            {data.allcafe && (
-              <div className="py-2 px-4 bg-gray-100 rounded-xl">All Cafe</div>
-            )}
-            {!data.inverter && (
-              <div className="py-2 px-4 bg-gray-100 rounded-xl">
-                Fix-Speed A/C Type
-              </div>
-            )}
-            <p>are effect on branch's energy consumption</p>
-          </div>
-        </div>
-      ) : (
-        <></>
-      )}
     </Layout>
   );
 }
