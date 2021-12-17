@@ -76,7 +76,7 @@ app.post("/new", (req, res) => {
 });
 
 // update the branch
-app.patch("/:id", async (req, res, nex) => {
+app.put("/:id", async (req, res, nex) => {
   try {
     const id = req.params.id;
     const updates = req.body;
