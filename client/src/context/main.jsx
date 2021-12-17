@@ -54,8 +54,6 @@ export default function MainContext({ children }) {
     }
   };
 
-  console.log(errMessage);
-
   const logout = async () => {
     await signOut(auth);
   };
@@ -108,6 +106,28 @@ export default function MainContext({ children }) {
 
   const positionChange = branchRank - oldBranchRank;
 
+  // consumption usage
+  const [latestUsage, setLatestUsage] = useState({ actual: 0, predicted: 0 });
+
+  useEffect(() => {
+    if (isData) {
+      setLatestUsage({
+        actual: +data.amount.actual[2021].slice(-1).join(""),
+        predicted: +data.amount.predicted[2021].slice(-1).join(""),
+      });
+    }
+  }, [isData]);
+
+  const [overUsed, setOverUsed] = useState(null);
+
+  useEffect(() => {
+    if (latestUsage.predicted - latestUsage.actual < 0) {
+      setOverUsed(true);
+    } else {
+      setOverUsed(false);
+    }
+  }, [latestUsage]);
+
   // navigation
   const [focusNav, setFocusNav] = useState(false);
 
@@ -137,6 +157,7 @@ export default function MainContext({ children }) {
         sortedScore,
         positionChange,
         errMessage,
+        overUsed,
       }}
     >
       {children}

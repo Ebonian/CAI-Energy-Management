@@ -47,12 +47,6 @@ export default function Home() {
     // "Dec",
   ];
 
-  console.log(data.score);
-
-  if (isData) {
-    console.log(data.score.slice(-9));
-  }
-
   return (
     <Layout page="Dashboards">
       <div className="grid w-full grid-cols-3 gap-24">
