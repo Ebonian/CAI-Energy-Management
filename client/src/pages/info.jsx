@@ -25,7 +25,7 @@ export default function Info() {
           </p>
         </div>
         <div className="flex flex-col flex-grow px-10">
-          <h1 className="font-semibold">Store Information</h1>
+          <h1 className="font-bold text-xl text-gray-700">Store Information</h1>
           <hr className="my-3" />
           <div className="flex w-full space-x-10 mt-7">
             <div className="flex flex-col flex-grow space-y-6">

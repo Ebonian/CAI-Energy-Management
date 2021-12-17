@@ -116,7 +116,7 @@ function NavList({ active, focusNav, route, name }) {
       className={`${
         active === name
           ? "bg-secondary-400 hover:opacity-95"
-          : "hover:bg-red-50"
+          : "hover:bg-secondary-400 hover:bg-opacity-10"
       } flex items-center space-x-4 cursor-pointer relative overflow-clip overflow-hidden p-3 rounded-lg duration-300`}
     >
       {name === "Dashboards" && <FiGrid className={IconStyle} />}

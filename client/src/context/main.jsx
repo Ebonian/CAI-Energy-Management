@@ -38,6 +38,8 @@ export default function MainContext({ children }) {
     }
   }, [session]);
 
+  const [errMessage, setErrMessage] = useState("");
+
   const login = async () => {
     try {
       const user = await signInWithEmailAndPassword(
@@ -48,8 +50,11 @@ export default function MainContext({ children }) {
       // console.log(user);
     } catch (error) {
       console.log(error.message);
+      setErrMessage(error.message);
     }
   };
+
+  console.log(errMessage);
 
   const logout = async () => {
     await signOut(auth);
@@ -131,6 +136,7 @@ export default function MainContext({ children }) {
         allScore,
         sortedScore,
         positionChange,
+        errMessage,
       }}
     >
       {children}

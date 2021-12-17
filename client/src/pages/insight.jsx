@@ -15,8 +15,7 @@ import {
 import { Line } from "react-chartjs-2";
 
 export default function Insight() {
-  const { session, isSupport, data, isData, allData, allScore } =
-    useContext(Context);
+  const { session, isSupport, data, isData } = useContext(Context);
 
   if (session) {
     if (!isSupport) {
@@ -130,8 +129,8 @@ export default function Insight() {
               {
                 label: "Actual",
                 data: isData && allAmount,
-                borderColor: "#FD6584",
-                backgroundColor: "rgba(255, 99, 132, 0.5)",
+                borderColor: "#01a550",
+                backgroundColor: "#01a550",
               },
               {
                 label: "Predicted",
@@ -171,8 +170,8 @@ export default function Insight() {
               {
                 label: "Score",
                 data: isData && data.score,
-                borderColor: "#FD6584",
-                backgroundColor: "rgba(255, 99, 132, 0.5)",
+                borderColor: "#01a550",
+                backgroundColor: "#01a550",
               },
             ],
           }}

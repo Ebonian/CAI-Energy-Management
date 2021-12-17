@@ -25,7 +25,7 @@ export default function Layout({ children, page }) {
           >
             <div className="px-24 space-y-10 relative">
               <div className="w-full flex justify-between items-center text-gray-700">
-                <h1 className="text-2xl font-bold">{page}</h1>
+                <h1 className="text-2xl font-bold text-gray-700">{page}</h1>
                 <Link
                   to="/info"
                   className="flex items-center space-x-2 select-none cursor-pointer"

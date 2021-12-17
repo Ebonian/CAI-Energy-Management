@@ -47,6 +47,12 @@ export default function Home() {
     // "Dec",
   ];
 
+  console.log(data.score);
+
+  if (isData) {
+    console.log(data.score.slice(-9));
+  }
+
   return (
     <Layout page="Dashboards">
       <div className="grid w-full grid-cols-3 gap-24">
@@ -85,7 +91,43 @@ export default function Home() {
             <h1 className="font-bold text-5xl pr-12">{isData && branchRank}</h1>
           </div>
         </div>
-        <div className="rounded-2xl bg-white h-48 p-3"></div>
+        <div className="rounded-2xl bg-white h-48 pb-10 pt-3 px-3">
+          <h3 className="font-bold text-xl">
+            Performance Graph
+            <span className="ml-3 text-gray-400 font-normal text-sm">
+              (Score)
+            </span>
+          </h3>
+          <Line
+            data={{
+              labels,
+              datasets: [
+                {
+                  label: "Score",
+                  data: isData && data.score.slice(-9),
+                  borderColor: "#01a550",
+                  backgroundColor: "#01a550",
+                },
+              ],
+            }}
+            options={{
+              responsive: true,
+              maintainAspectRatio: false,
+              elements: {
+                line: {
+                  tension: 0.35,
+                },
+              },
+              scales: {
+                xAxes: {
+                  grid: {
+                    display: false,
+                  },
+                },
+              },
+            }}
+          />
+        </div>
       </div>
       <div className="w-full p-5 rounded-2xl bg-white">
         <h3 className="font-bold text-xl text-gray-700">Electricity Usage</h3>
@@ -119,8 +161,8 @@ export default function Home() {
                 {
                   label: "Actual",
                   data: isData && data.amount.actual[2021],
-                  borderColor: "#FD6584",
-                  backgroundColor: "rgba(255, 99, 132, 0.5)",
+                  borderColor: "#01a550",
+                  backgroundColor: "#01a550",
                 },
                 {
                   label: "Predicted",
