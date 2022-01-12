@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { Context } from "../context/main";
 import { Navigate } from "react-router-dom";
 
@@ -11,6 +12,8 @@ export default function Auth() {
   if (session) {
     return <Navigate to="/" />;
   }
+
+  const [toggle, setToggle] = useState(false);
 
   return (
     <div className="flex h-screen w-full">
@@ -52,6 +55,43 @@ export default function Auth() {
             </p>
           </div>
         )}
+        <div className="relative mt-10">
+          <h3
+            className="flex items-center font-bold select-none cursor-pointer"
+            onClick={() => setToggle(!toggle)}
+          >
+            Demo Accounts
+            <span>
+              {toggle ? (
+                <FiChevronUp className="ml-4 text-xl" />
+              ) : (
+                <FiChevronDown className="ml-4 text-xl" />
+              )}
+            </span>
+          </h3>
+          {toggle && (
+            <div className="absolute left-0 right-0 top-7 grid grid-cols-2">
+              <div className="font-semibold">Username</div>
+              <div className="font-semibold">Password</div>
+              <p>0001@branch</p>
+              <p>password</p>
+              <p>0002@branch</p>
+              <p>password</p>
+              <p>0003@branch</p>
+              <p>password</p>
+              <p>0004@branch</p>
+              <p>password</p>
+              <p>0001@support</p>
+              <p>password</p>
+              <p>0002@support</p>
+              <p>password</p>
+              <p>0003@support</p>
+              <p>password</p>
+              <p>0004@support</p>
+              <p>password</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
